@@ -12,17 +12,6 @@ spec:
         env: 
           - name: DOCKER_HOST 
             value: tcp://localhost:2375 
-            env:
-          - name: DOCKERHUB_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: docker-hub-access
-                key: user
-          - name: DOCKERHUB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: docker-hub-access
-                key: password
       - name: dind-daemon 
         image: docker:18-dind 
         resources: 
@@ -53,7 +42,7 @@ spec:
 
             stage('Build'){
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
-                        def hello_image = docker.build("tlitovsk/k8sDebug:latest")
+                        def hello_image = docker.build("tlitovsk/k8sdebug:latest")
                         currentBuild.result = "SUCCESS"
                         if (env.BRANCH_NAME == 'master') {
                             hello_image.push()

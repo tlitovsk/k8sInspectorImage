@@ -4,4 +4,4 @@
 - telnet
 
 ## usage 
-kubectl run -it --rm --restart=Never ubuntu --image=tlitovsk/k8sDebug /bin/bash
+kubectl run -it --rm --restart=Never ubuntu --image=tlitovsk/k8sdebug:latest /bin/bash
