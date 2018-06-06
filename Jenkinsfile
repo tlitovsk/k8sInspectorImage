@@ -53,7 +53,7 @@ spec:
 
             stage('Build'){
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
-                        def hello_image = docker.build("tlitovsk/k8sDebug:latest")
+                        def hello_image = docker.build("tlitovsk/k8sdebug:latest")
                         currentBuild.result = "SUCCESS"
                         if (env.BRANCH_NAME == 'master') {
                             hello_image.push()
